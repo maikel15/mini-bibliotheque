@@ -1,0 +1,11 @@
+{
+    "borrowings": [
+    {
+    "id":"1",
+    "bookId": "1",
+    "userId": "1",
+    "borrowDate": "2025-01-30",
+    "returnDate": null
+    }
+   ]
+    }
