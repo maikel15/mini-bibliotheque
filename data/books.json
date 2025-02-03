@@ -1,13 +1,28 @@
- {
-    "books":[
-    {
-    "id":"1",
-    "title":"LePetit Prince",
-    "author": "AntoinedeSaint-Exupéry",
-    "year": "1943",
-    "available":true,
-    "description": "..."
-    }
+{
+    "books": [
+        {
+            "id": 1,
+            "title": "Le Petit Prince",
+            "author": "Antoine de Saint-Exup\u00e9ry",
+            "year": "1943",
+            "available": true,
+            "description": "Un conte po\u00e9tique"
+        },
+        {
+            "id": 2,
+            "title": "1984",
+            "author": "George Orwell",
+            "year": "1949",
+            "available": true,
+            "description": "Une dystopie politique"
+        },
+        {
+            "id": 3,
+            "title": "kkddada",
+            "author": "loadad",
+            "year": "1211213",
+            "available": false,
+            "description": "adsadadad\r\n"
+        }
     ]
-    }
-    
+}

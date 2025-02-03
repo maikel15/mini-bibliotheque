@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Modifier le livre</h1>
+    <form method="POST" class="book-form">
+        <label for="title">Titre</label>
+        <input type="text" id="title" name="title" value="{{ book.title }}" required>
+
+        <label for="author">Auteur</label>
+        <input type="text" id="author" name="author" value="{{ book.author }}" required>
+
+        <label for="year">Année</label>
+        <input type="number" id="year" name="year" value="{{ book.year }}" required>
+
+        <label for="description">Description</label>
+        <textarea id="description" name="description">{{ book.description }}</textarea>
+
+        <label for="available">Disponible</label>
+        <input type="checkbox" id="available" name="available" {% if book.available %} checked {% endif %}>
+
+        <button type="submit" class="btn btn-primary">Modifier</button>
+    </form>
+{% endblock %}

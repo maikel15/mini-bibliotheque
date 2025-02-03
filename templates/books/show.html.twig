@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{{ book.title }}</h1>
+    <p><strong>Auteur :</strong> {{ book.author }}</p>
+    <p><strong>Année :</strong> {{ book.year }}</p>
+    <p><strong>Description :</strong> {{ book.description }}</p>
+
+    <a href="{{ path('book_list') }}" class="btn btn-info">Retour à la liste</a>
+
+    <form action="{{ path('book_delete', {id: book.id}) }}" method="POST" class="delete-form">
+        <button type="submit" class="btn btn-danger" onclick="return confirm('Supprimer ce livre ?')">Supprimer</button>
+    </form>
+{% endblock %}
