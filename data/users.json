@@ -1,11 +1,40 @@
 {
-    "users":[
-    {
-    "id":"1",
-    "email":"user@example.com",
-    "password":"hashedPassword",
-    "firstName":"John",
-    "lastName":"Doe"
-    }
+    "users": [
+        {
+            "id": "1",
+            "username": "user1",
+            "email": "user@example.com",
+            "password": "satom",
+            "firstName": "John",
+            "lastName": "Doe",
+            "role": "user"
+        },
+        {
+            "id": "2",
+            "username": "admin1",
+            "email": "admin@example.com",
+            "password": "adminPass",
+            "firstName": "Admin",
+            "lastName": "Manager",
+            "role": "admin"
+        },
+        {
+            "id": 3,
+            "username": "masd",
+            "email": "ada@dasa",
+            "password": "$2y$10$LbQTKZHI0s5Dnbcr3KYWRuX5N1Te3fUd1dMVfiteCLE5dEF9wZgIu",
+            "firstName": "sa",
+            "lastName": "qe",
+            "role": "admin"
+        },
+        {
+            "id": 4,
+            "username": "dad",
+            "email": "sda@fdf",
+            "password": "$2y$10$Tx\/StyVX5wU9XOMGdn7e5.FEG904PEaOtSGgkwm6wEgklvqeygIEe",
+            "firstName": "da",
+            "lastName": "da",
+            "role": "user"
+        }
     ]
-    }
+}

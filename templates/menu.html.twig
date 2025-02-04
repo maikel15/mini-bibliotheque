@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Menu{% endblock %}
+
+{% block body %}
+    <h1>Bienvenue, {{ user.firstName }} !</h1>
+
+    {% if user.role == 'admin' %}
+        <h2>Menu Administrateur</h2>
+        <ul>
+            <li><a href="{{ path('book_list') }}">📚 Gérer les livres</a></li>
+            <li><a href="{{ path('user_list') }}">👤 Gérer les utilisateurs</a></li>
+            <li><a href="{{ path('borrowing_list') }}">📥 Gérer les emprunts</a></li>
+            <li><a href="{{ path('user_logout') }}">🔴 Déconnexion</a></li>
+        </ul>
+    {% else %}
+        <h2>Menu Utilisateur</h2>
+        <ul>
+            <li><a href="{{ path('book_list') }}">📖 Voir la liste des livres</a></li>
+            <li><a href="{{ path('user_logout') }}">🔴 Déconnexion</a></li>
+        </ul>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,95 @@
+/* listes.css */
+
+/* Boutons (Ajout et Modifier) */
+.add-item, a.btn-info, a.btn-warning {
+    padding: 8px 15px;
+    border-radius: 5px;
+    color: white; /* Assurez-vous que le texte des boutons est blanc */
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+/* Ajout d'un livre (Ajouter) */
+.add-item {
+    background-color: #28a745; /* Vert pour l'ajout */
+}
+
+.add-item:hover {
+    background-color: #218838; /* Légère teinte plus foncée au survol */
+}
+
+/* Voir - Modifier (Info et Warning) */
+a.btn-info {
+    background-color: #17a2b8; /* Bleu pour Voir */
+}
+
+a.btn-info:hover {
+    background-color: #138496; /* Légère teinte plus foncée au survol */
+}
+
+a.btn-warning {
+    background-color: #ffc107; /* Jaune pour Modifier */
+    color: black; /* Texte en noir */
+}
+
+a.btn-warning:hover {
+    background-color: #e0a800; /* Légère teinte plus foncée au survol */
+}
+
+/* Boutons de suppression */
+button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #e74c3c; /* Rouge pour Supprimer */
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+button:hover {
+    background-color: #c0392b; /* Légère teinte plus foncée au survol */
+}
+
+button i {
+    font-size: 1.2em;
+}
+
+/* Autres ajustements généraux */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    font-size: 1em;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}

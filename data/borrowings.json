@@ -1,11 +1,25 @@
 {
     "borrowings": [
-    {
-    "id":"1",
-    "bookId": "1",
-    "userId": "1",
-    "borrowDate": "2025-01-30",
-    "returnDate": null
-    }
-   ]
-    }
+        {
+            "id": "1",
+            "bookId": "1",
+            "userId": "12",
+            "borrowDate": "2025-01-30",
+            "returnDate": ""
+        },
+        {
+            "id": 2,
+            "bookId": "1",
+            "userId": "1",
+            "borrowDate": "0022-02-12",
+            "returnDate": "0002-02-22"
+        },
+        {
+            "id": 3,
+            "userId": "22",
+            "bookId": "2",
+            "borrowDate": "0001-12-02",
+            "returnDate": "0021-02-21"
+        }
+    ]
+}
