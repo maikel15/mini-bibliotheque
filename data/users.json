@@ -12,8 +12,8 @@
         {
             "id": "2",
             "username": "admin1",
-            "email": "admin@example.com",
-            "password": "adminPass",
+            "email": "admin@admin",
+            "password": "admin",
             "firstName": "Admin",
             "lastName": "Manager",
             "role": "admin"
@@ -29,11 +29,11 @@
         },
         {
             "id": 4,
-            "username": "dad",
-            "email": "sda@fdf",
-            "password": "$2y$10$Tx\/StyVX5wU9XOMGdn7e5.FEG904PEaOtSGgkwm6wEgklvqeygIEe",
-            "firstName": "da",
-            "lastName": "da",
+            "username": "kmda",
+            "email": "ada@as",
+            "password": "$2y$10$0QFZ06ReAK\/IzxV7oIuvO..YV7Hmr7dZKYAkSMk8HD.WMzd61md0y",
+            "firstName": "ad",
+            "lastName": "ada",
             "role": "user"
         }
     ]

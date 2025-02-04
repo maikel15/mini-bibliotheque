@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un emprunt{% endblock %}
+
+{% block body %}
+    <h1>Ajouter un emprunt</h1>
+    <link rel="stylesheet" href="{{ asset('css/listes.css') }}">
+
+
+    <form action="{{ path('borrowing_add') }}" method="post">
+        <label for="user_id">ID de l'utilisateur:</label>
+        <input type="text" id="user_id" name="user_id" required><br><br>
+
+        <label for="book_id">ID du livre:</label>
+        <input type="text" id="book_id" name="book_id" required><br><br>
+
+        <label for="borrow_date">Date d'emprunt:</label>
+        <input type="date" id="borrow_date" name="borrow_date" required><br><br>
+
+        <label for="return_date">Date de retour:</label>
+        <input type="date" id="return_date" name="return_date"><br><br>
+
+        <button type="submit">Ajouter</button>
+    </form>
+{% endblock %}

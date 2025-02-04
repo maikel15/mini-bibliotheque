@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des emprunts{% endblock %}
+
+{% block body %}
+    <h1>Liste des emprunts</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Livre</th>
+                <th>Utilisateur</th>
+                <th>Date d'emprunt</th>
+                <th>Date de retour</th>
+                <th>Actions</th>
+            </tr>
+            <link rel="stylesheet" href="{{ asset('css/listes.css') }}">
+        </thead>
+        <tbody>
+            {% for borrowing in borrowings %}
+                <tr>
+                    <td>{{ borrowing.id }}</td>
+                    <td>{{ borrowing.bookId }}</td> <!-- Remplacer par le titre du livre si nécessaire -->
+                    <td>{{ borrowing.userId }}</td> <!-- Remplacer par le nom de l'utilisateur si nécessaire -->
+                    <td>{{ borrowing.borrowDate }}</td>
+                    <td>{{ borrowing.returnDate ? borrowing.returnDate : 'Non retourné' }}</td>
+                    <td>
+                        <a href="{{ path('borrowing_edit', {id: borrowing.id}) }}">Modifier</a>
+                        <form action="{{ path('borrowing_delete', {id: borrowing.id}) }}" method="post" style="display:inline;">
+                            <button type="submit">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('borrowing_add') }}">Ajouter un emprunt</a>
+{% endblock %}

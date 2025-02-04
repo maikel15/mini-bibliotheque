@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Confirmer la suppression{% endblock %}
+
+{% block body %}
+    <h1>Confirmer la suppression de l'utilisateur</h1>
+    <link rel="stylesheet" href="{{ asset('css/listes.css') }}">
+
+
+    <p>Êtes-vous sûr de vouloir supprimer l'utilisateur {{ user.username }} ?</p>
+
+    <form action="{{ path('user_delete', {'id': user.id}) }}" method="post">
+        <button type="submit">Oui, supprimer</button>
+        <a href="{{ path('user_list') }}">Non, annuler</a>
+    </form>
+{% endblock %}

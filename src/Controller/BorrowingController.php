@@ -17,7 +17,6 @@ class BorrowingController extends AbstractController
         $borrowings = $this->getBorrowings();
         return $this->render('borrowings/index.html.twig', ['borrowings' => $borrowings]);
     }
-    
 
     #[Route('/borrowings/add', name: 'borrowing_add', methods: ['GET', 'POST'])]
     public function addBorrowing(Request $request): Response
@@ -31,10 +30,10 @@ class BorrowingController extends AbstractController
             $borrowings = $this->getBorrowings();
             $newBorrowing = [
                 'id' => count($borrowings) + 1,
-                'user_id' => $userId,
-                'book_id' => $bookId,
-                'borrow_date' => $borrowDate,
-                'return_date' => $returnDate,
+                'userId' => $userId,
+                'bookId' => $bookId,
+                'borrowDate' => $borrowDate,
+                'returnDate' => $returnDate,
             ];
             $borrowings[] = $newBorrowing;
             $this->saveBorrowings($borrowings);
@@ -52,10 +51,10 @@ class BorrowingController extends AbstractController
         foreach ($borrowings as &$borrowing) {
             if ($borrowing['id'] == $id) {
                 if ($request->isMethod('POST')) {
-                    $borrowing['user_id'] = $request->request->get('user_id');
-                    $borrowing['book_id'] = $request->request->get('book_id');
-                    $borrowing['borrow_date'] = $request->request->get('borrow_date');
-                    $borrowing['return_date'] = $request->request->get('return_date');
+                    $borrowing['userId'] = $request->request->get('user_id');
+                    $borrowing['bookId'] = $request->request->get('book_id');
+                    $borrowing['borrowDate'] = $request->request->get('borrow_date');
+                    $borrowing['returnDate'] = $request->request->get('return_date');
                     $this->saveBorrowings($borrowings);
                     return $this->redirectToRoute('borrowing_list');
                 }
@@ -77,19 +76,18 @@ class BorrowingController extends AbstractController
     }
 
     private function getBorrowings(): array
-{
-    $filePath = __DIR__ . '/../../data/borrowings.json';
+    {
+        $filePath = $this->borrowingsFile;
 
-    if (!file_exists($filePath)) {
-        return [];
+        if (!file_exists($filePath)) {
+            return [];
+        }
+
+        $data = file_get_contents($filePath);
+        $borrowings = json_decode($data, true)['borrowings'] ?? [];
+
+        return $borrowings;
     }
-
-    $data = file_get_contents($filePath);
-    $borrowings = json_decode($data, true)['borrowings'] ?? [];
-
-    return $borrowings;
-}
-
 
     private function saveBorrowings(array $borrowings): void
     {

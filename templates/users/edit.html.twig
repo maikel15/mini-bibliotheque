@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un utilisateur{% endblock %}
+
+{% block body %}
+    <h1>Modifier l'utilisateur</h1>
+    <link rel="stylesheet" href="{{ asset('css/listes.css') }}">
+
+
+    <form action="{{ path('user_edit', {'id': user.id}) }}" method="post">
+        <div>
+            <label for="username">Nom d'utilisateur</label>
+            <input type="text" id="username" name="username" value="{{ user.username }}" required>
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" value="{{ user.email }}" required>
+        </div>
+        <div>
+            <label for="firstName">Prénom</label>
+            <input type="text" id="firstName" name="firstName" value="{{ user.firstName }}" required>
+        </div>
+        <div>
+            <label for="lastName">Nom</label>
+            <input type="text" id="lastName" name="lastName" value="{{ user.lastName }}" required>
+        </div>
+        <div>
+            <label for="role">Rôle</label>
+            <select id="role" name="role">
+                <option value="user" {% if user.role == 'user' %}selected{% endif %}>Utilisateur</option>
+                <option value="admin" {% if user.role == 'admin' %}selected{% endif %}>Administrateur</option>
+            </select>
+        </div>
+        <div>
+            <label for="password">Mot de passe (laisser vide pour ne pas changer)</label>
+            <input type="password" id="password" name="password">
+        </div>
+        <button type="submit">Mettre à jour</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+    <h1>Bienvenue, {{ user.firstName }} !</h1>
+
+    {% if user.role == 'admin' %}
+        <a href="{{ path('user_list') }}">Gérer les utilisateurs</a>
+        <a href="{{ path('book_list') }}">Gérer les livres</a>
+    {% else %}
+        <a href="{{ path('book_list') }}">Voir les livres</a>
+    {% endif %}
+
+    <a href="{{ path('user_logout') }}">Se déconnecter</a>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un emprunt{% endblock %}
+
+{% block body %}
+    <h1>Modifier un emprunt</h1>
+    <link rel="stylesheet" href="{{ asset('css/listes.css') }}">
+
+
+    <form action="{{ path('borrowing_edit', {id: borrowing.id}) }}" method="post">
+        <label for="user_id">ID de l'utilisateur:</label>
+        <input type="text" id="user_id" name="user_id" value="{{ borrowing.userId }}" required><br><br>
+
+        <label for="book_id">ID du livre:</label>
+        <input type="text" id="book_id" name="book_id" value="{{ borrowing.bookId }}" required><br><br>
+
+        <label for="borrow_date">Date d'emprunt:</label>
+        <input type="date" id="borrow_date" name="borrow_date" value="{{ borrowing.borrowDate }}" required><br><br>
+
+        <label for="return_date">Date de retour:</label>
+        <input type="date" id="return_date" name="return_date" value="{{ borrowing.returnDate }}"><br><br>
+
+        <button type="submit">Modifier</button>
+    </form>
+{% endblock %}

@@ -12,30 +12,40 @@ class BookController extends AbstractController
     private string $booksFile = __DIR__ . '/../../data/books.json';
 
     #[Route('/books', name: 'book_list', methods: ['GET'])]
-    public function index(): Response
+    public function index(Request $request): Response
     {
-        $books = $this->getBooks();
-        return $this->render('books/index.html.twig', ['books' => $books]);
+        $session = $request->getSession();
+        $user = $session->get('user');
+
+        if (!$user) {
+            return $this->redirectToRoute('user_login');
+        }
+
+        return $this->render('books/index.html.twig', [
+            'books' => $this->getBooks(),
+            'user' => $user // Permet d'afficher le rôle dans Twig
+        ]);
     }
 
     #[Route('/books/add', name: 'book_add', methods: ['GET', 'POST'])]
     public function addBook(Request $request): Response
     {
-        if ($request->isMethod('POST')) {
-            $title = $request->request->get('title');
-            $author = $request->request->get('author');
-            $year = $request->request->get('year');
-            $description = $request->request->get('description');
-            $available = $request->request->get('available') ? true : false; // Récupérer la valeur de la disponibilité
+        $session = $request->getSession();
+        $user = $session->get('user');
 
+        if (!$user || $user['role'] !== 'admin') {
+            return new Response('Accès interdit', Response::HTTP_FORBIDDEN);
+        }
+
+        if ($request->isMethod('POST')) {
             $books = $this->getBooks();
             $newBook = [
                 'id' => count($books) + 1,
-                'title' => $title,
-                'author' => $author,
-                'year' => $year,
-                'description' => $description,
-                'available' => $available,  // Assurer que la disponibilité est prise en compte
+                'title' => $request->request->get('title'),
+                'author' => $request->request->get('author'),
+                'year' => $request->request->get('year'),
+                'description' => $request->request->get('description'),
+                'available' => $request->request->get('available') ? true : false,
             ];
             $books[] = $newBook;
             $this->saveBooks($books);
@@ -49,6 +59,13 @@ class BookController extends AbstractController
     #[Route('/books/{id}/edit', name: 'book_edit', methods: ['GET', 'POST'])]
     public function editBook(Request $request, int $id): Response
     {
+        $session = $request->getSession();
+        $user = $session->get('user');
+
+        if (!$user || $user['role'] !== 'admin') {
+            return new Response('Accès interdit', Response::HTTP_FORBIDDEN);
+        }
+
         $books = $this->getBooks();
         foreach ($books as &$book) {
             if ($book['id'] == $id) {
@@ -57,12 +74,9 @@ class BookController extends AbstractController
                     $book['author'] = $request->request->get('author');
                     $book['year'] = $request->request->get('year');
                     $book['description'] = $request->request->get('description');
-                    $book['available'] = $request->request->get('available') ? true : false; // Mise à jour de la disponibilité
-
                     $this->saveBooks($books);
                     return $this->redirectToRoute('book_list');
                 }
-
                 return $this->render('books/edit.html.twig', ['book' => $book]);
             }
         }
@@ -70,24 +84,37 @@ class BookController extends AbstractController
     }
 
     #[Route('/books/{id}/delete', name: 'book_delete', methods: ['POST'])]
-    public function deleteBook(int $id): Response
+    public function deleteBook(Request $request, int $id): Response
     {
-        $books = $this->getBooks();
-        $books = array_filter($books, fn($book) => $book['id'] != $id);
+        $session = $request->getSession();
+        $user = $session->get('user');
+
+        if (!$user || $user['role'] !== 'admin') {
+            return new Response('Accès interdit', Response::HTTP_FORBIDDEN);
+        }
+
+        $books = array_filter($this->getBooks(), fn($book) => $book['id'] != $id);
         $this->saveBooks($books);
 
         return $this->redirectToRoute('book_list');
     }
 
     #[Route('/books/{id}', name: 'book_show', methods: ['GET'])]
-    public function showBook(int $id): Response
+    public function showBook(Request $request, int $id): Response
     {
-        $books = $this->getBooks();
-        foreach ($books as $book) {
+        $session = $request->getSession();
+        $user = $session->get('user');
+
+        if (!$user) {
+            return $this->redirectToRoute('user_login');
+        }
+
+        foreach ($this->getBooks() as $book) {
             if ($book['id'] == $id) {
                 return $this->render('books/show.html.twig', ['book' => $book]);
             }
         }
+
         return new Response('Livre non trouvé', Response::HTTP_NOT_FOUND);
     }
 
