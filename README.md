@@ -33,21 +33,3 @@ symfony server:start
 
 Accédez à l'application dans votre navigateur à l'adresse suivante :
 http://localhost:8000
-
-Structure du projet
-Voici la structure principale du projet :
-
-/mini-bibliotheque
-│
-├── /assets              # Contient les fichiers CSS et JavaScript
-├── /config              # Contient la configuration de Symfony
-├── /public              # Contient les fichiers publics comme index.php
-├── /src                 # Contient les contrôleurs, entités et services
-│   ├── /Controller      # Contient les contrôleurs pour les livres, emprunts et utilisateurs
-│   ├── /Entity          # Contient les entités (modèles de données)
-├── /templates           # Contient les templates Twig pour l'affichage
-│   ├── /books           # Templates pour la gestion des livres
-│   ├── /borrowings      # Templates pour la gestion des emprunts
-│   └── /users           # Templates pour la gestion des utilisateurs
-├── /translations        # Contient les fichiers de traduction
-└── /var                 # Contient les fichiers temporaires et le cache
