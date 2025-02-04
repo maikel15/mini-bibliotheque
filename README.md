@@ -29,12 +29,9 @@ Installez les dépendances avec Composer :
 composer install
 
 Démarrez le serveur de développement Symfony :
-
-bash
 symfony server:start
-Accédez à l'application dans votre navigateur à l'adresse suivante :
 
-cpp
+Accédez à l'application dans votre navigateur à l'adresse suivante :
 http://localhost:8000
 
 Structure du projet
